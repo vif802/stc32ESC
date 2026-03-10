@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la 【文档】说明书*)",
+      "Bash(ls -la *.zip *.rar)",
+      "Bash(xxd -l 200 \"SEEKFREE_STC32G_BLDC/bldc/bldc_config.h\")",
+      "Bash(xxd -s 500 -l 300 \"SEEKFREE_STC32G_BLDC/bldc/bldc_config.h\")",
+      "Bash(xxd -l 100 \"SEEKFREE_STC32G_BLDC/bldc/motor.h\")",
+      "Bash(xxd -l 10 \"SEEKFREE_STC32G_BLDC/bldc/bldc_config.h\")",
+      "Bash(xxd -l 10 \"bldc/bldc_config.h\")",
+      "Bash(xxd -l 10 \"SEEKFREE_STC32G_BLDC/bldc/motor.c\")",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(xxd -l 3 \"$f\")",
+      "Bash(done)",
+      "Bash(xxd \"SEEKFREE_STC32G_BLDC/bldc/motor.c\")",
+      "Bash(do sed:*)",
+      "Bash(xxd pit_timer.c)",
+      "Bash(grep -n '?if\\\\|?motor\\\\.\\\\|?//.*if\\\\|//.*?' motor.c)"
+    ]
+  }
+}

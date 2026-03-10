@@ -1,0 +1,44 @@
+# Keil MDK generated files
+*.uvgui.*
+*.uvoptx
+*.uvguix.*
+*.scvd
+
+# Build output
+Out_File/
+Objects/
+Listings/
+*.hex
+*.bin
+*.map
+*.lst
+*.obj
+*.o
+*.d
+*.crf
+*.axf
+*.elf
+*.sct
+
+# J-Link files
+JLinkLog.txt
+JLinkSettings.ini
+
+# Backup files
+*.bak
+*.tmp
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Debug files
+*.dbgconf
