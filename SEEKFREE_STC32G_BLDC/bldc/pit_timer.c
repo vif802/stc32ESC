@@ -105,8 +105,9 @@ void TM1_Isr() interrupt 3
             {
                 motor_start();
             }
-            else if((0 == motor.duty) && ((3 == motor.run_flag) || (4 == motor.run_flag)))
+            else if((0 == motor.duty) && (0 != motor.run_flag))
             {
+                // 锟斤拷要锟斤拷锟斤拷锟斤拷诮锟斤拷锟斤拷停锟斤拷锟斤拷锟斤拷锟阶讹拷停锟斤拷锟斤拷锟斤拷锟街癸拷
                 motor_stop();
             }
         }
