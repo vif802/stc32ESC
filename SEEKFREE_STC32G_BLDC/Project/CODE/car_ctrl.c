@@ -1,23 +1,24 @@
 #include "car_ctrl.h"
 #include "math.h"
+#include "car_motor.h"
 
-//ËÙ¶È²ÎÊı
+//ï¿½Ù¶È²ï¿½ï¿½ï¿½
 int16 get_speed_l, get_speed_r, goal_speed_l = 0, goal_speed_r = 0, s_goal_speed = 0;
 int err_speed_l[3]={0}, err_speed_r[3]={0};
 float speed_pid_p = 10, speed_pid_i = 3, speed_pid_d = 10, speed_pid_out_l, speed_pid_out_r;
 int16 up_speed = 0;
 
-//½ÇËÙ¶È²ÎÊı
+//ï¿½ï¿½ï¿½Ù¶È²ï¿½ï¿½ï¿½
 int16 get_angvel, goal_angvel = 0;
 float angvel_err, last_angvel_err;
 float angvel_pid_p = 0.05, angvel_pid_i = 0, angvel_pid_d = 0.01, angvel_pid_out;
 
-//×ªÏò²ÎÊı
+//×ªï¿½ï¿½ï¿½ï¿½ï¿½
 uint8 adc_get_l, adc_get_m, adc_get_r;
 float turn_err, last_turn_err;
 float turn_k1, turn_k2, turn_pid_dp, turn_pid_sp, turn_pid_dd, turn_pid_sd, turn_pid_out;
 
-//³õÊ¼»¯
+//ï¿½ï¿½Ê¼ï¿½ï¿½
 void car_ctrl_init()
 {
 	motor_init();
@@ -31,14 +32,14 @@ void car_ctrl_init()
     pwm_init(PWMB_CH1_P74, 50, 500);
 }
 
-//ÉèÖÃ×óÓÒÂÖÄ¿±êËÙ¶È
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ù¶ï¿½
 void set_goal_speed(int16 l, int16 r)
 {
 	goal_speed_l = l;
 	goal_speed_r = r;
 }
 
-//ËÙ¶ÈPID¼ÆËã
+//ï¿½Ù¶ï¿½PIDï¿½ï¿½ï¿½ï¿½
 void speed_pid_ctrl()
 {
 	get_encoder(&get_speed_l, &get_speed_r);
@@ -61,13 +62,13 @@ void speed_pid_ctrl()
     motor_control((int)speed_pid_out_l,(int)speed_pid_out_r);
 }
 
-//ÉèÖÃÄ¿±ê½ÇËÙ¶È
+//ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
 void set_goal_angvel(int16 angvel)
 {
 	goal_angvel = angvel;
 }
 
-//½ÇËÙ¶ÈPID¼ÆËã
+//ï¿½ï¿½ï¿½Ù¶ï¿½PIDï¿½ï¿½ï¿½ï¿½
 void angvel_pid_ctrl()
 {
 	get_icm20602_gyro_simspi();
@@ -78,7 +79,7 @@ void angvel_pid_ctrl()
 	set_goal_speed(s_goal_speed + angvel_pid_out, s_goal_speed - angvel_pid_out);
 }
 
-//×ªÏòPID¼ÆËã
+//×ªï¿½ï¿½PIDï¿½ï¿½ï¿½ï¿½
 void turn_pid_ctrl()
 {
 	uint8 temp_m;
@@ -117,7 +118,7 @@ void turn_pid_ctrl()
 	set_goal_angvel(turn_pid_out);
 }
 
-//´®¼¶¿ØÖÆ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void car_ctrl()
 {
 	turn_pid_ctrl();
