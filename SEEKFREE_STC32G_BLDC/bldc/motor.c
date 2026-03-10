@@ -471,19 +471,24 @@ void pwma_isr(void) interrupt 26            // PWM涓柇鍑芥暟, 鏍规嵁P
                 {
                     uint8 zc_quality_ok = 0;
                     uint16 err_percent = 0;
+                    uint16 divisor = 0;
 
                     motor.commutation_num++;
                     motor.zc_detect_count++;  // 缁熻杩囬浂淇″彿娆℃暟
 
-                    // 妫€鏌ヨ繃闆朵俊鍙疯川閲
-
-                    if((max > 0) && (min > 0))
+                    // 妫€鏌ヨ繃闆朵俊鍙疯川閲�
+                    divisor = (max + min) >> 1;
+                    if((max > 0) && (min > 0) && (divisor > 0))
                     {
-                        err_percent = ((max - min) * 100) / ((max + min) >> 1);
+                        err_percent = ((max - min) * 100) / divisor;
                         if(err_percent < START_SWITCH_ZC_MAX_ERR)
                         {
                             zc_quality_ok = 1;
                         }
+                    }
+                    else
+                    {
+                        err_percent = 0;  // 闄ゅ櫒鏁板紓甯革紝璁句负0琛ㄧず寮傚父
                     }
 
                     // 妫€鏌ユ槸鍚︽弧瓒冲垏鎹㈡潯浠讹紙浣嗕笉鍦ㄨ繖閲屽垏鎹紝鐢卞畾鏃跺櫒3缁熶竴澶勭悊锛?                    // zc_quality_ok鍜宔rr_percent鐢ㄤ簬鍒ゆ柇锛屼絾鍒囨崲閫昏緫鍦═M3_Isr涓?                    (void)zc_quality_ok;  // 鏄惧紡鏍囪宸蹭娇鐢紝娑堥櫎璀﹀憡
