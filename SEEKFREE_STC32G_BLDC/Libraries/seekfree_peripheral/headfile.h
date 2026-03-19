@@ -13,7 +13,7 @@
 #include "board.h"
 #include "common.h"
 
-//------Öğ·É¿Æ¼¼µ¥Æ¬»úÍâÉèÇı¶¯Í·ÎÄ¼ş
+//------¼µ¥Æ¬»úÍâÉèÇı¶¯Í·ÎÄ¼ş
 #include "zf_uart.h"
 #include "zf_gpio.h"
 #include "zf_iic.h"
@@ -26,7 +26,7 @@
 #include "zf_delay.h"
 #include "zf_eeprom.h"
 
-//------Öğ·É¿Æ¼¼²úÆ·Çı¶¯Í·ÎÄ¼ş
+//------Ö²úÆ·Çı¶¯Í·ÎÄ¼ş
 #include "SEEKFREE_FONT.h"
 #include "SEEKFREE_18TFT.h"
 #include "SEEKFREE_IIC.h"
