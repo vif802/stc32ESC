@@ -24,8 +24,8 @@ void pwmb_isr()interrupt 27
 		pwmin.high_value = (PWMB_CCR2H << 8) + PWMB_CCR2L;   // CC2捕获高电平宽度
 		PWMB_SR1 = 0;
         
-        // 频率在合理的范围内才计算
-        if((30 < pwmin.frequency) && (400 > pwmin.frequency))
+        // 频率在合理的范围内才计算 (要求: 50-300Hz)
+        if((50 < pwmin.frequency) && (300 > pwmin.frequency))
         {
             // 计算高电平时间 仅在高电平时间为1-2ms内有效 
             // pwmin.high_time = pwmin.high_value * (PWMB_PSCRL + 1) * 1000 / (sys_clk/1000);
